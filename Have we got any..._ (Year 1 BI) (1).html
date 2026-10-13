@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Have we got any...? (Year 1 BI)</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@700;900&display=swap">
+<style>
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);--bg:#fff8e7;--card:#fff;--ink:#2b2b2b;--btn:#ff8a3d;--yes:#1fa34a;--no:#e03131}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1f2430;--card:#2b3242;--ink:#f3f3f3}}
+:root[data-theme="dark"]{--bg:#1f2430;--card:#2b3242;--ink:#f3f3f3}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Comic Neue","Comic Sans MS","Chalkboard SE","Comic Sans",cursive;text-align:center}
+h1{font-size:1.4rem;margin:12px 8px 4px}
+#stage{position:relative;max-width:620px;margin:8px auto;background:linear-gradient(#fff1d6 0 64%,#b98b5e 64% 66%,#e8d5b7 66%);border-radius:20px;height:min(78vh,520px);overflow:hidden}
+#fridge{position:absolute;left:50%;bottom:6%;transform:translateX(-50%);width:32%;height:60%;background:#dfe7ec;border:4px solid #8a99a5;border-radius:14px 14px 6px 6px}
+#fridge::before{content:"";position:absolute;inset:12px 12px 12px 30px;background:linear-gradient(#f4fbff,#e3f2fb);border:3px solid #b6c6d0;border-radius:8px}
+#fridge::after{content:"";position:absolute;inset:15px 15px 15px 33px;background:linear-gradient(transparent 32%,#9fb3bf 32% 34%,transparent 34% 65%,#9fb3bf 65% 67%,transparent 67%)}
+#fridge .door{position:absolute;left:-2px;top:-2px;bottom:-2px;width:24px;background:#c3cfd7;border-right:3px solid #8a99a5;border-radius:10px 0 0 4px}
+#fridge .door::after{content:"";position:absolute;right:4px;top:40%;width:5px;height:22%;background:#8a99a5;border-radius:3px}
+.ch{position:absolute;bottom:6%;width:34%;transition:transform .3s}
+#f{left:3%}#m{right:3%;width:38%}
+.ch.talk{animation:hop .5s infinite alternate}
+@keyframes hop{to{transform:translateY(-10px)}}
+.ch.dim{opacity:.75}
+#bubble{position:absolute;top:3%;left:4%;right:4%;background:#fff;color:#222;border:3px solid #444;border-radius:18px;padding:8px 10px;font-size:clamp(.95rem,4vw,1.2rem);line-height:1.3;font-weight:700;text-wrap:balance;min-height:56px;display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity .3s}
+#bubble small{display:block;font-size:.8em;font-weight:900;color:#777}
+#food{position:absolute;left:52%;top:44%;transform:translate(-50%,-50%) scale(0);font-size:clamp(3rem,18vw,5.5rem);transition:transform .4s cubic-bezier(.3,1.6,.5,1)}
+#food.on{transform:translate(-50%,-50%) scale(1)}
+#mark{position:absolute;left:52%;top:66%;transform:translate(-50%,-50%) scale(0);font-size:clamp(2.5rem,12vw,4rem);font-weight:900;transition:transform .4s cubic-bezier(.3,1.6,.5,1)}
+#mark.on{transform:translate(-50%,-50%) scale(1)}
+#ctl{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin:10px}
+button{font:inherit;font-weight:700;font-size:1.1rem;border:0;border-radius:30px;padding:12px 22px;background:var(--btn);color:#fff;min-height:48px}
+button.alt{background:#4c6ef5}
+#dots{margin:4px}
+.d{display:inline-block;width:12px;height:12px;border-radius:50%;background:#bbb;margin:0 3px}
+.d.on{background:var(--btn)}
+.w{padding:0 3px;border-radius:8px;transition:background .2s}.w.hl{background:#ffd43b}
+</style></head><body>
+<h1>🥪 Have we got any…?</h1>
+<p style="margin:0 12px 4px;font-size:1rem">Tap ▶ Start to watch, or tap Next ▶ to go sentence by sentence.</p>
+<div id="stage">
+ <div id="fridge"><b class="door"></b></div>
+ <div id="bubble"></div>
+ <div id="food"></div><div id="mark"></div>
+ <svg id="f" class="ch" viewBox="0 0 100 150"><path d="M15 150 Q50 70 85 150Z" fill="#ff7eb6"/><circle cx="50" cy="42" r="34" fill="#ff5fa2"/><path d="M50 44 m-34 -2 a34 34 0 0 1 68 0 q0 28 -34 40 q-34 -12 -34 -40z" fill="#ff5fa2"/><circle cx="50" cy="52" r="22" fill="#ffd9b8"/><circle cx="42" cy="50" r="3" fill="#222"/><circle cx="58" cy="50" r="3" fill="#222"/><path d="M42 60 Q50 68 58 60" stroke="#c0392b" stroke-width="3" fill="none" stroke-linecap="round"/><circle cx="36" cy="58" r="4" fill="#ffb3b3" opacity=".7"/><circle cx="64" cy="58" r="4" fill="#ffb3b3" opacity=".7"/></svg>
+ <svg id="m" class="ch" viewBox="0 0 100 160"><path d="M8 160 Q50 60 92 160Z" fill="#2aa59a"/><circle cx="50" cy="42" r="36" fill="#1b7f77"/><path d="M14 44 a36 36 0 0 1 72 0 q0 34 -36 52 q-36 -18 -36 -52z" fill="#1b7f77"/><circle cx="50" cy="52" r="23" fill="#ffd9b8"/><circle cx="42" cy="50" r="3" fill="#222"/><circle cx="58" cy="50" r="3" fill="#222"/><path d="M41 60 Q50 69 59 60" stroke="#c0392b" stroke-width="3" fill="none" stroke-linecap="round"/></svg>
+</div>
+<div id="dots"></div>
+<div id="ctl"><button id="go">▶ Start</button><button class="alt" id="spd">🐢 Slow</button><button class="alt" id="snd">🔊 Sound on</button><button class="alt" id="tst">🔈 Test voice</button><button class="alt" id="stp">🖐 Step mode: Off</button></div>
+<div id="stepctl"><div id="ctl2" style="display:flex;gap:8px;justify-content:center;margin:10px"><button id="prev" style="opacity:.4">◀ Back</button><button id="next">Next ▶</button></div></div>
+<script>
+const L=[
+["F","Mum, I want to make a sandwich.","🥪"],
+["F","Have we got any bread?","🍞"],
+["M","Yes, we have.","🍞",1],
+["F","Have we got any tomatoes?","🍅"],
+["M","Yes, we have.","🍅",1],
+["F","Have we got any cheese?","🧀"],
+["M","No, we have not.","🧀",0],
+["F","Have we got any steak?","🥩"],
+["M","Yes, we have.","🥩",1],
+["F","Have we got any eggs?","🥚"],
+["M","No, we have not.","🥚",0]];
+const $=id=>document.getElementById(id);
+let run=0,slow=true,sound=true;
+$("dots").innerHTML=L.map(()=>'<span class="d"></span>').join("");
+const sleep=ms=>new Promise(r=>setTimeout(r,ms));
+function hl(id){const w=document.querySelectorAll(".w");let k=0;const iv=slow?650:400;(function n(){if(id!==run||k>=w.length)return;w.forEach(x=>x.classList.remove("hl"));w[k++].classList.add("hl");setTimeout(n,iv)})()}
+function say(t){return new Promise(res=>{
+ const base=Math.max(t.length*(slow?170:110),t.split(" ").length*(slow?650:400))+1500;
+ let done=false;const fin=()=>{if(!done){done=true;res()}};
+ if(sound&&window.speechSynthesis){try{speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(t);u.lang="en-GB";u.rate=slow?.6:.85;u.pitch=1.2;u.onend=()=>setTimeout(fin,600);speechSynthesis.speak(u);setTimeout(fin,base+4000);return}catch(e){}}
+ setTimeout(fin,base);});}
+function showLine(i,id){
+  const [s,t,fd,a]=L[i];
+  document.querySelectorAll(".d").forEach((d,j)=>d.classList.toggle("on",j<=i));
+  $("f").classList.toggle("talk",s=="F");$("m").classList.toggle("talk",s=="M");
+  $("f").classList.toggle("dim",s=="M");$("m").classList.toggle("dim",s=="F");
+  const b=$("bubble");b.style.opacity=1;b.innerHTML='<small style="color:'+(s=="F"?"#b0124f":"#0b5d56")+'">'+(s=="F"?"Fauza":"Mum")+"</small>"+t.split(" ").map(w=>'<span class="w">'+w+'</span>').join(" ");hl(id);
+  $("food").textContent=fd;$("food").classList.add("on");
+  if(s=="F"){$("mark").classList.remove("on")}
+  else{const m=$("mark");m.textContent=a?"✅":"❌";m.style.color=a?"var(--yes)":"var(--no)";m.classList.add("on")}
+}
+async function play(){
+ const id=++run;$("go").textContent="🔁 Replay";
+ const ok=()=>id===run;
+ for(let i=0;i<L.length&&ok();i++){
+  const s=L[i][0];
+  showLine(i,id);
+  await say(L[i][1]);if(!ok())return;
+  await sleep(slow?1400:700);
+  if(s=="M"){$("food").classList.remove("on");$("mark").classList.remove("on");await sleep(500)}
+ }
+ if(ok()){$("f").classList.remove("talk","dim");$("m").classList.remove("talk","dim");$("bubble").innerHTML="🌟 Well done! 🌟"}
+}
+$("go").onclick=play;
+let step=false,cur=0;
+function goTo(i){cur=Math.max(0,Math.min(L.length-1,i));const id=++run;showLine(cur,id);say(L[cur][1]);$("prev").disabled=cur==0;$("next").disabled=cur==L.length-1;$("prev").style.opacity=cur==0?.4:1;$("next").style.opacity=cur==L.length-1?.4:1}
+function enterStep(){if(!step){step=true;run++;$("stp").textContent="🖐 Step mode: On";$("go").style.display="none";return true}return false}
+$("prev").onclick=()=>{if(enterStep())goTo(0);else goTo(cur-1)};
+$("next").onclick=()=>{if(enterStep())goTo(0);else goTo(cur+1)};
+$("stp").onclick=()=>{step=!step;run++;try{speechSynthesis.cancel()}catch(e){}
+ $("stp").textContent=step?"🖐 Step mode: On":"🖐 Step mode: Off";
+ $("go").style.display=step?"none":"";
+ if(step){goTo(0)}else{$("bubble").style.opacity=0;$("food").classList.remove("on");$("mark").classList.remove("on");$("f").classList.remove("talk","dim");$("m").classList.remove("talk","dim");document.querySelectorAll(".d").forEach(d=>d.classList.remove("on"));$("go").textContent="▶ Start";cur=0;$("prev").disabled=true;$("prev").style.opacity=.4;$("next").disabled=false;$("next").style.opacity=1}};
+$("tst").onclick=()=>{try{speechSynthesis.cancel();const u=new SpeechSynthesisUtterance("Hello! Can you hear me?");u.lang="en-GB";u.onerror=()=>{$("tst").textContent="❌ No voice"};speechSynthesis.speak(u)}catch(e){$("tst").textContent="❌ No voice"}};
+$("spd").onclick=()=>{slow=!slow;$("spd").textContent=slow?"🐢 Slow":"🐇 Normal"};
+$("snd").onclick=()=>{sound=!sound;$("snd").textContent=sound?"🔊 Sound on":"🔇 Sound off";if(!sound&&window.speechSynthesis)speechSynthesis.cancel()};
+</script></body></html>
